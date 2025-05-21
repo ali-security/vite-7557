@@ -128,7 +128,7 @@ jobs:
       
       - name: pack
         if: steps.changed-files.outputs.only_changed != 'true'
-        run: pnpm -r pack
+        run: pnpm pack packages/vite
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
