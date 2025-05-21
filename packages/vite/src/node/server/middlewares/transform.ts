@@ -50,7 +50,7 @@ const trailingQuerySeparatorsRE = /[?&]+$/
 const urlRE = /[?&]url\b/
 const rawRE = /[?&]raw\b/
 const inlineRE = /[?&]inline\b/
-const svgRE = /\.svg\b/
+const svgRE = / \.svg\b/
 
 function deniedServingAccessForTransform(
   url: string,
@@ -197,6 +197,8 @@ export function transformMiddleware(
           next,
         )
       ) {
+        debugCache?.(`[304] ${prettifyUrl(url, server.config.root)}`)
+        res.statusCode = 403 // Forbidden
         return
       }
 
