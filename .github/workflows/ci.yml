@@ -126,17 +126,9 @@ jobs:
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run test-build
 
-      - name: pack_version
-        if: steps.changed-files.outputs.only_changed != 'true'
-        run: pnpm --version
-      
-      - name: which_pnpm
-        if: steps.changed-files.outputs.only_changed != 'true'
-        run: which pnpm
-      
       - name: pack
         if: steps.changed-files.outputs.only_changed != 'true'
-        run: pnpm pack packages/vite
+        run: npm i -g pnpm@9.6.0 && pnpm i && pnpm run build && cd packages/vite && pnpm pack
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
