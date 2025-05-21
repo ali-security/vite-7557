@@ -38,13 +38,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-22.04]
         node_version: [18, 20, 22]
         include:
           # Active LTS + other OS
-          - os: macos-latest
+          - os: macos-14
             node_version: 20
-          - os: windows-latest
+          - os: windows-2022
             node_version: 20
       fail-fast: false
 
@@ -128,8 +128,8 @@ jobs:
 
   lint:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
-    name: "Lint: node-20, ubuntu-latest"
+    runs-on: ubuntu-22.04
+    name: "Lint: node-20, ubuntu-22.04"
     steps:
       - uses: actions/checkout@v4
 
