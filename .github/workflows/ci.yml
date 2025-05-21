@@ -125,6 +125,14 @@ jobs:
       - name: Test build
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run test-build
+
+      - name: pack_version
+        if: steps.changed-files.outputs.only_changed != 'true'
+        run: pnpm --version
+      
+      - name: which_pnpm
+        if: steps.changed-files.outputs.only_changed != 'true'
+        run: which pnpm
       
       - name: pack
         if: steps.changed-files.outputs.only_changed != 'true'
