@@ -126,11 +126,11 @@ jobs:
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run test-build
       
-      - name: Upload JAR Artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.os}}-node-${{ matrix.node_version}}-jars # Name for your artifact (e.g., Linux-java-21-jars)
-          path: "**/*.jar" 
+          name: ${{ matrix.os}}-node-${{ matrix.node_version}}-tgz 
+          path: "**/*.tgz" 
           retention-days: 1 # Optional: How long to keep the artifact (default is 90 days, max 90)
           if-no-files-found: warn # Optional: What to do if no files match (warn, error, ignore)
 
