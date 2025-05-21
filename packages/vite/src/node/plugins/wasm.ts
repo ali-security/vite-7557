@@ -4,8 +4,6 @@ import { fileToUrl } from './asset'
 
 const wasmHelperId = '\0vite/wasm-helper.js'
 
-const wasmInitRE = /(?<![?#].*)\.wasm\?init/
-
 const wasmHelper = async (opts = {}, url: string) => {
   let result
   if (url.startsWith('data:')) {
@@ -64,7 +62,7 @@ export const wasmHelperPlugin = (config: ResolvedConfig): Plugin => {
         return `export default ${wasmHelperCode}`
       }
 
-      if (!wasmInitRE.test(id)) {
+      if (!id.endsWith('.wasm?init')) {
         return
       }
 
